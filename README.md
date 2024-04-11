@@ -2,11 +2,11 @@
 
  Este proyecto consiste en una aplicación robusta con una arquitectura de backend implementada en Ruby, utilizando el framework Sinatra para una gestión eficiente del servidor. En el lado del cliente, se emplea React como librería de interfaz de usuario, aprovechando las ventajas de TypeScript para garantizar un tipado fuerte y un código más seguro. Para la persistencia de datos, se opta por MongoDB, una base de datos NoSQL que ofrece flexibilidad y una escalabilidad óptima.
 
- Stack
-  Backend
-    Sinatra
-  Fronend
-    React
-    Typescript
-  DB
-    MongoDb
+ # Stack
+  - Backend
+    - Sinatra
+  - Fronend
+    - React
+    - Typescript
+  - DB
+    - MongoDb
