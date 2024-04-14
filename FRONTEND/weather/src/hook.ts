@@ -98,6 +98,10 @@ export function useWeatherData() {
   };
 }
 
+type commentsProps = {
+  external_id: string;
+  body: string;
+};
 type WeatherDataProps = {
   external_id: string;
   title: string;
@@ -110,7 +114,7 @@ type WeatherDataProps = {
     longitude: number;
     latitude: number;
   };
-  comments: any[];
+  comments: commentsProps[];
 };
 
 const socket = io(localhost);
@@ -171,7 +175,7 @@ export const usePagedWeatherData = () => {
   };
 };
 
-export const addComment = async (externalId: string, commentBody: any) => {
+export const addComment = async (externalId: string, commentBody: string) => {
   try {
     await axios.post(Add_Commet, {
       external_id: externalId,

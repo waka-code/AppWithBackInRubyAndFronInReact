@@ -22,7 +22,11 @@ export function useStyle() {
 
       const styleGap = { display: "flex", gap: "8px", padding: "2px" };
 
-      const styleFontZise = { fontSize: "12px" };
+      const styleFontZise = { 
+        fontSize: "12px",
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+      };
 
       const styleDiv = {
         gap: "8px",
@@ -35,7 +39,7 @@ export function useStyle() {
         alignItems: "center",
         justifyContent: "between",
         display: "flex",
-        gap: "8px",
+        gap: "15px",
         borderBlockEnd: "1px solid black",
         padding: "2px",
       }

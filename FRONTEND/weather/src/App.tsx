@@ -1,8 +1,4 @@
-import {
-  addComment,
-  usePagedWeatherData,
-  useWeatherData,
-} from "./hook";
+import { addComment, usePagedWeatherData, useWeatherData } from "./hook";
 import { stylesProps, useStyle } from "./style/style";
 
 export function WeatherDisplay() {
@@ -21,7 +17,7 @@ export function WeatherDisplay() {
   }
 
   return (
-    <div style={{ width: "70%" }}>
+    <div style={{ width: "100%" }}>
       <div>
         <h1>Weather Data</h1>
         <hr />
@@ -94,24 +90,15 @@ const WeatherDataDisplay = ({
             <button style={styleBtn} onClick={prevPage}>
               Prev
             </button>
-            <button
-              style={{ ...styleBtn, ...styleFontZise }}
-              onClick={nextPage}
-            >
+            <button style={{ ...styleBtn }} onClick={nextPage}>
               Next
             </button>
           </div>
           <div style={styleGap}>
-            <button
-              style={{ ...styleBtn, ...styleFontZise }}
-              onClick={() => setMagType("high")}
-            >
+            <button style={{ ...styleBtn }} onClick={() => setMagType("high")}>
               High
             </button>
-            <button
-              style={{ ...styleBtn, ...styleFontZise }}
-              onClick={() => setMagType("low")}
-            >
+            <button style={{ ...styleBtn }} onClick={() => setMagType("low")}>
               Low
             </button>
           </div>
@@ -120,24 +107,42 @@ const WeatherDataDisplay = ({
           {data.map((d, idx) => {
             return (
               <div key={idx} style={styleDivMap}>
-                <p style={styleFontZise}>Title: {d.title}</p>
-                <p style={styleFontZise}>MagType: {d.mag_type}</p>
-                <p style={styleFontZise}>Magnitude: {d.magnitude}</p>
-                <p style={styleFontZise}>Place: {d.place}</p>
+                <p style={styleFontZise} title={d.title}>
+                  Title: {d.title}
+                </p>
+                <p style={styleFontZise} title={d.mag_type}>
+                  MagType: {d.mag_type}
+                </p>
+                <p style={styleFontZise} title={d.magnitude.toString()}>
+                  Magnitude: {d.magnitude}
+                </p>
+                <p style={styleFontZise} title={d.place}>
+                  Place: {d.place}
+                </p>
                 <p style={styleFontZise}>Tsunami: {d.tsunami}</p>
-                <p style={styleFontZise}>Type: {d.type}</p>
-                <p style={styleFontZise}>
+                <p style={styleFontZise} title={d.type}>
+                  Type: {d.type}
+                </p>
+                <p
+                  style={styleFontZise}
+                  title={d.coordinates.longitude.toString()}
+                >
                   Longitude: {d.coordinates.longitude}
                 </p>
-                <p style={styleFontZise}>Latitude: {d.coordinates.latitude}</p>
+                <p
+                  style={styleFontZise}
+                  title={d.coordinates.latitude.toString()}
+                >
+                  Latitude: {d.coordinates.latitude}
+                </p>
                 {d.comments &&
                   d.comments.map((comment, index) => (
-                    <p key={index} style={styleFontZise}>
+                    <p key={index} style={styleFontZise} title={comment.body}>
                       Comment: {comment.body}
                     </p>
                   ))}
                 <button
-                  style={{ ...styleBtn, ...styleFontZise }}
+                  style={{ ...styleBtn }}
                   onClick={() => {
                     setIsCommet(true), setId(d.external_id);
                   }}
@@ -158,7 +163,7 @@ const WeatherDataDisplay = ({
             }}
           />
           <button
-            style={{ ...styleBtn, ...styleFontZise }}
+            style={{ ...styleBtn }}
             onClick={() => {
               addComment(id, coment), setCommet(""), setIsCommet(false);
             }}
