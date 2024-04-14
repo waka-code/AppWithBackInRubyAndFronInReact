@@ -1,4 +1,4 @@
-import { addComment, usePagedWeatherData, useWeatherData } from "./hook";
+import { addComment, usePagedWeatherData, useWeatherData } from "./hook/hook";
 import { stylesProps, useStyle } from "./style/style";
 
 export function WeatherDisplay() {
