@@ -2,7 +2,7 @@ import {
   addComment,
   usePagedWeatherData,
   useWeatherData,
-} from "./component/hook";
+} from "./hook";
 import { stylesProps, useStyle } from "./style/style";
 
 export function WeatherDisplay() {

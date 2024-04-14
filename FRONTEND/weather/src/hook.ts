@@ -9,7 +9,7 @@ import {
   get_Data,
   get_Weather_Data,
   localhost,
-} from "../Apis";
+} from "./Apis";
 
 type HourlyData = {
   date: string;
