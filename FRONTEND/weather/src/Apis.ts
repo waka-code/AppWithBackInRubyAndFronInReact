@@ -1,0 +1,6 @@
+export const Add_Commet = "http://localhost:4567/weather/add_comment"
+export const get_Weather_Data = "http://localhost:4567/weather/latitud/"
+export const get_Data = "http://localhost:4567/weather/latitud/0/longitud/0"
+export const get_All_Data = "http://localhost:4567/weather/all_data"
+export const localhost = "http://localhost:4567"
+export const get_Add_Data = "http://localhost:4567/weather/add_data"
