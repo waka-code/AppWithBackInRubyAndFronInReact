@@ -160,18 +160,45 @@ export const usePagedWeatherData = () => {
     setPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   }, []);
 
+  const handleSetMagType = useCallback(
+    (magType: string) => {
+      if (magType === "high") {
+        setMagType("high");
+      } else {
+        setMagType("low");
+      }
+    },
+    [setMagType]
+  );
+ 
+  const handleSetCommet = useCallback(
+    (e: { target: { value: string } }) => setCommet(e.target.value),
+    [setCommet]
+  );
+  const handleAddComment = useCallback(() => {
+    addComment(id, coment);
+    setCommet("");
+    setIsCommet(false);
+  }, [addComment, id, coment, setCommet, setIsCommet]);
+
+  const handleEdit = useCallback(
+    (external_id: string) => {
+      setIsCommet(true);
+      setId(external_id);
+    },
+    [setIsCommet, setId]
+  );
+
   return {
     data: allData,
     nextPage,
     prevPage,
-    setMagType,
     totalPages,
-    coment,
-    setCommet,
     isComent,
-    setIsCommet,
-    id,
-    setId,
+    handleSetMagType,
+    handleEdit,
+    handleAddComment,
+    handleSetCommet,
   };
 };
 

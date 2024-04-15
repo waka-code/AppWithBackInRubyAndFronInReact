@@ -1,44 +1,53 @@
-import { addComment, usePagedWeatherData } from "../hook/hook";
+import { useMemo } from "react";
+import { usePagedWeatherData } from "../hook/hook";
 import { stylesProps } from "../style/style";
 
-export const WeatherDataDisplay = ({
-  styleBtn,
-  styleGap,
-  styleFontZise,
-  styleDiv,
-  styleDivMap,
-  styleIsCommet,
-}: stylesProps) => {
+export const WeatherDataDisplay = (props: stylesProps) => {
   const {
     data,
     nextPage,
     prevPage,
-    setMagType,
-    coment,
-    setCommet,
     isComent,
-    setIsCommet,
-    id,
-    setId,
+    handleEdit,
+    handleAddComment,
+    handleSetCommet,
+    handleSetMagType,
   } = usePagedWeatherData();
+
+  const {
+    styleBtn,
+    styleGap,
+    styleFontZise,
+    styleDiv,
+    styleDivMap,
+    styleIsCommet,
+  } = props;
+
+  const styleBtnMemo = useMemo(() => ({ ...styleBtn }), [styleBtn]);
 
   return (
     <div>
       <div>
         <div style={styleGap}>
           <div style={styleGap}>
-            <button style={styleBtn} onClick={prevPage}>
+            <button style={styleBtnMemo} onClick={prevPage}>
               Prev
             </button>
-            <button style={{ ...styleBtn }} onClick={nextPage}>
+            <button style={styleBtnMemo} onClick={nextPage}>
               Next
             </button>
           </div>
           <div style={styleGap}>
-            <button style={{ ...styleBtn }} onClick={() => setMagType("high")}>
+            <button
+              style={styleBtnMemo}
+              onClick={() => handleSetMagType("high")}
+            >
               High
             </button>
-            <button style={{ ...styleBtn }} onClick={() => setMagType("low")}>
+            <button
+              style={styleBtnMemo}
+              onClick={() => handleSetMagType("low")}
+            >
               Low
             </button>
           </div>
@@ -82,10 +91,8 @@ export const WeatherDataDisplay = ({
                     </p>
                   ))}
                 <button
-                  style={{ ...styleBtn }}
-                  onClick={() => {
-                    setIsCommet(true), setId(d.external_id);
-                  }}
+                  style={styleBtnMemo}
+                  onClick={() => handleEdit(d.external_id)}
                 >
                   Edit
                 </button>
@@ -99,15 +106,10 @@ export const WeatherDataDisplay = ({
           <textarea
             placeholder="Comment"
             onChange={(e) => {
-              setCommet(e.target.value);
+              handleSetCommet(e);
             }}
           />
-          <button
-            style={{ ...styleBtn }}
-            onClick={() => {
-              addComment(id, coment), setCommet(""), setIsCommet(false);
-            }}
-          >
+          <button style={styleBtnMemo} onClick={handleAddComment}>
             Add Comment
           </button>
         </div>
