@@ -1,11 +1,5 @@
 class WeatherService
-    def self.insert_weather_data(data)
-      attributes = data['attributes']
-
-      if attributes.nil?
-        return { status: 400, body: "Missing attributes in data" }
-      end
-
+    def self.insert_weather_data(data, attributes)
       weather_data = WeatherData.new(
         type: data['type'],
         external_id: attributes['external_id'],

@@ -49,7 +49,7 @@ class WeatherRoutes < Sinatra::Base
       post '/weather/add_data' do
         data = JSON.parse(request.body.read)
         attributes = data['weather_attributes']
-        response = WeatherService.insert_weather_data(data)
+        response = WeatherService.insert_weather_data(data, attributes)
         content_type :json
         response.to_json
       end
